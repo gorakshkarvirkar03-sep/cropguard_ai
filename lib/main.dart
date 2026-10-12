@@ -112,9 +112,9 @@ class CropGuardHome extends StatelessWidget {
               children: [
                 Expanded(
                   child: _dashboardCard(
-                    Icons.eco,
-                    'My Crops',
-                    'Manage crops',
+                    Icons.health_and_safety,
+                    'Early Disease Detection & Management',
+                    'Detect early, act fast',
                   ),
                 ),
                 const SizedBox(width: 12),
