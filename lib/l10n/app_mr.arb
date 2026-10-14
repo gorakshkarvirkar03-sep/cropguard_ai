@@ -1,0 +1,23 @@
+{
+  "@@locale": "mr",
+  "appTitle": "क्रॉपगार्ड एआय",
+  "welcomeFarmer": "स्वागत आहे, शेतकरी बंधू!",
+  "welcomeSubtitle": "एआयच्या मदतीने तुमच्या पिकांचे संरक्षण करा.",
+  "heroTitle": "तुमची पिके, आमची काळजी.",
+  "heroSubtitle": "पिकांवरील रोग लवकर ओळखा आणि किडींच्या संभाव्य धोक्यावर लक्ष ठेवा.",
+  "farmDashboard": "शेत डॅशबोर्ड",
+  "earlyDetectionTitle": "रोगाची लवकर ओळख आणि व्यवस्थापन",
+  "earlyDetectionSub": "लवकर ओळखा, त्वरित कृती करा",
+  "diseaseScan": "रोग स्कॅन",
+  "diseaseScanSub": "पान तपासा",
+  "weatherRisk": "हवामान धोका",
+  "weatherRiskSub": "परिस्थितीवर लक्ष ठेवा",
+  "reports": "अहवाल",
+  "reportsSub": "मागील अहवाल पाहा",
+  "smartTipTitle": "स्मार्ट शेती टीप",
+  "smartTipBody": "तुमच्या पिकांचे नियमित निरीक्षण करा. हवामान आणि आर्द्रतेतील बदलांमुळे काही पीक रोगांचा धोका वाढू शकतो.",
+  "pickFromGallery": "गॅलरीतून निवडा",
+  "takePhoto": "फोटो काढा",
+  "result": "निकाल",
+  "language": "भाषा"
+}

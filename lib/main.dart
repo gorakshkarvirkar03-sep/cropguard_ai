@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'detect_screen.dart';
+import 'l10n/app_localizations.dart';
+import 'locale_controller.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await localeController.load();
   runApp(const CropGuardApp());
 }
 
@@ -10,16 +15,31 @@ class CropGuardApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'CropGuard AI',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.green,
+    return ListenableBuilder(
+      listenable: localeController,
+      builder: (context, _) => MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'CropGuard AI',
+        locale: localeController.locale,
+        localizationsDelegates: const [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: const [
+          Locale('en'),
+          Locale('hi'),
+          Locale('mr'),
+        ],
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.green,
+          ),
+          useMaterial3: true,
         ),
-        useMaterial3: true,
+        home: const CropGuardHome(),
       ),
-      home: const CropGuardHome(),
     );
   }
 }
@@ -29,17 +49,29 @@ class CropGuardHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
+
     return Scaffold(
       backgroundColor: const Color(0xFFF5F8F2),
       appBar: AppBar(
         backgroundColor: Colors.green.shade800,
         foregroundColor: Colors.white,
-        title: const Text(
-          'CropGuard AI',
-          style: TextStyle(fontWeight: FontWeight.bold),
+        title: Text(
+          t.appTitle,
+          style: const TextStyle(fontWeight: FontWeight.bold),
         ),
-        actions: const [
-          Padding(
+        actions: [
+          PopupMenuButton<Locale>(
+            icon: const Icon(Icons.language),
+            tooltip: t.language,
+            onSelected: (l) => localeController.setLocale(l),
+            itemBuilder: (_) => const [
+              PopupMenuItem(value: Locale('en'), child: Text('English')),
+              PopupMenuItem(value: Locale('hi'), child: Text('हिन्दी')),
+              PopupMenuItem(value: Locale('mr'), child: Text('मराठी')),
+            ],
+          ),
+          const Padding(
             padding: EdgeInsets.only(right: 16),
             child: Icon(Icons.notifications_none),
           ),
@@ -50,17 +82,17 @@ class CropGuardHome extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Welcome, Farmer! 🌱',
-              style: TextStyle(
+            Text(
+              '${t.welcomeFarmer} \u{1F331}',
+              style: const TextStyle(
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 8),
-            const Text(
-              'Protect your crops with AI-powered insights.',
-              style: TextStyle(fontSize: 15, color: Colors.black54),
+            Text(
+              t.welcomeSubtitle,
+              style: const TextStyle(fontSize: 15, color: Colors.black54),
             ),
             const SizedBox(height: 24),
             Container(
@@ -70,28 +102,27 @@ class CropGuardHome extends StatelessWidget {
                 color: Colors.green.shade800,
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: const Column(
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.agriculture,
                     color: Colors.white,
                     size: 42,
                   ),
-                  SizedBox(height: 12),
+                  const SizedBox(height: 12),
                   Text(
-                    'Your crops, our care.',
-                    style: TextStyle(
+                    t.heroTitle,
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 23,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Text(
-                    'Detect crop diseases early and monitor '
-                    'potential pest risks.',
-                    style: TextStyle(
+                    t.heroSubtitle,
+                    style: const TextStyle(
                       color: Colors.white70,
                       fontSize: 15,
                     ),
@@ -100,9 +131,9 @@ class CropGuardHome extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 24),
-            const Text(
-              'Farm Dashboard',
-              style: TextStyle(
+            Text(
+              t.farmDashboard,
+              style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
@@ -113,16 +144,16 @@ class CropGuardHome extends StatelessWidget {
                 Expanded(
                   child: _dashboardCard(
                     Icons.health_and_safety,
-                    'Early Disease Detection & Management',
-                    'Detect early, act fast',
+                    t.earlyDetectionTitle,
+                    t.earlyDetectionSub,
                   ),
                 ),
                 const SizedBox(width: 12),
                 Expanded(
                   child: _dashboardCard(
                     Icons.biotech,
-                    'Disease Scan',
-                    'Check a leaf',
+                    t.diseaseScan,
+                    t.diseaseScanSub,
                     onTap: () {
                       Navigator.push(
                         context,
@@ -141,37 +172,35 @@ class CropGuardHome extends StatelessWidget {
                 Expanded(
                   child: _dashboardCard(
                     Icons.cloud,
-                    'Weather Risk',
-                    'Monitor conditions',
+                    t.weatherRisk,
+                    t.weatherRiskSub,
                   ),
                 ),
                 const SizedBox(width: 12),
                 Expanded(
                   child: _dashboardCard(
                     Icons.history,
-                    'Reports',
-                    'View past reports',
+                    t.reports,
+                    t.reportsSub,
                   ),
                 ),
               ],
             ),
             const SizedBox(height: 24),
-            const Text(
-              'Smart Farming Tip 💡',
-              style: TextStyle(
+            Text(
+              '${t.smartTipTitle} \u{1F4A1}',
+              style: const TextStyle(
                 fontSize: 19,
                 fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 10),
-            const Card(
+            Card(
               child: Padding(
-                padding: EdgeInsets.all(16),
+                padding: const EdgeInsets.all(16),
                 child: Text(
-                  'Monitor your crops regularly. Changes in '
-                  'weather and humidity can increase the risk '
-                  'of certain crop diseases.',
-                  style: TextStyle(fontSize: 15),
+                  t.smartTipBody,
+                  style: const TextStyle(fontSize: 15),
                 ),
               ),
             ),

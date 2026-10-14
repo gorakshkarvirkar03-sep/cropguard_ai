@@ -1,0 +1,23 @@
+{
+  "@@locale": "en",
+  "appTitle": "CropGuard AI",
+  "welcomeFarmer": "Welcome, Farmer!",
+  "welcomeSubtitle": "Protect your crops with AI-powered insights.",
+  "heroTitle": "Your crops, our care.",
+  "heroSubtitle": "Detect crop diseases early and monitor potential pest risks.",
+  "farmDashboard": "Farm Dashboard",
+  "earlyDetectionTitle": "Early Disease Detection & Management",
+  "earlyDetectionSub": "Detect early, act fast",
+  "diseaseScan": "Disease Scan",
+  "diseaseScanSub": "Check a leaf",
+  "weatherRisk": "Weather Risk",
+  "weatherRiskSub": "Monitor conditions",
+  "reports": "Reports",
+  "reportsSub": "View past reports",
+  "smartTipTitle": "Smart Farming Tip",
+  "smartTipBody": "Monitor your crops regularly. Changes in weather and humidity can increase the risk of certain crop diseases.",
+  "pickFromGallery": "Pick from Gallery",
+  "takePhoto": "Take Photo",
+  "result": "Result",
+  "language": "Language"
+}

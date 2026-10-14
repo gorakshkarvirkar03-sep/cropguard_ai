@@ -1,0 +1,23 @@
+{
+  "@@locale": "hi",
+  "appTitle": "क्रॉपगार्ड एआई",
+  "welcomeFarmer": "स्वागत है, किसान भाई!",
+  "welcomeSubtitle": "एआई की मदद से अपनी फसलों की सुरक्षा करें।",
+  "heroTitle": "आपकी फसल, हमारी देखभाल।",
+  "heroSubtitle": "फसल के रोगों का जल्दी पता लगाएँ और कीटों के संभावित खतरे पर नज़र रखें।",
+  "farmDashboard": "खेत डैशबोर्ड",
+  "earlyDetectionTitle": "रोग की शीघ्र पहचान और प्रबंधन",
+  "earlyDetectionSub": "जल्दी पहचानें, तुरंत कदम उठाएँ",
+  "diseaseScan": "रोग स्कैन",
+  "diseaseScanSub": "पत्ती की जाँच करें",
+  "weatherRisk": "मौसम जोखिम",
+  "weatherRiskSub": "परिस्थितियों पर नज़र रखें",
+  "reports": "रिपोर्ट",
+  "reportsSub": "पिछली रिपोर्ट देखें",
+  "smartTipTitle": "स्मार्ट खेती टिप",
+  "smartTipBody": "अपनी फसलों की नियमित निगरानी करें। मौसम और नमी में बदलाव से कुछ फसल रोगों का खतरा बढ़ सकता है।",
+  "pickFromGallery": "गैलरी से चुनें",
+  "takePhoto": "फोटो लें",
+  "result": "परिणाम",
+  "language": "भाषा"
+}
